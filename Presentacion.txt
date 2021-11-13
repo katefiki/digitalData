@@ -4,3 +4,5 @@ Buenas, mi nombre es Eilleen Maria Gutierrez Acosta me considero una persona com
  Poseo conocimientos basicos en java phyton html, css javascript. 
  
 Mi nombre es Wilson Ortega y en este ciclo 4 de programación tendré el rol de Product-Owner. He adquirido conocimientos básicos en lenguajes de programación lo cual me permite trabajar en el desarrollo de aplicaciones web.
+
+Mi nombre es Carlos Javier Maigual. En el ciclo 4 tendré el rol de Analista
