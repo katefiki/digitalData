@@ -2,3 +2,5 @@ Mi nombre es Lady Katherine Fiquitiva Bocarejo y soy el Scrum Master.
 
 Buenas, mi nombre es Eilleen Maria Gutierrez Acosta me considero una persona comprometida, honesta y autodidacta.
  Poseo conocimientos basicos en java phyton html, css javascript. 
+ 
+Mi nombre es Wilson Ortega y en este ciclo 4 de programación tendré el rol de Product-Owner. He adquirido conocimientos básicos en lenguajes de programación lo cual me permite trabajar en el desarrollo de aplicaciones web.
