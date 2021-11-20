@@ -11,8 +11,8 @@ import { ModeloAvance } from './modelos/avances/avances.js';
 //import dotenv from 'dotenv';
 
 
-// const main = async () => {
-//     await conectarBaseDatos(); 
+const main = async () => {
+await conectarBaseDatos(); 
 //     await ModeloAvance.create({
 //         fecha: new Date('2021/12/24'),
 //         descripcion: 'Configuracion de herramientas',
