@@ -27,7 +27,10 @@ const usuariosSchema = new Schema({
       message: 'El formato del correo electrónico está errado.',
     },
   },
-  
+  password: {
+    type: String,
+    required: true,
+  },
   
   rol: {
     type: String,

@@ -1,18 +1,70 @@
-import Express from 'express';
-import {usuariosModel} from './modelos/usuario/usuarios.js';
-import {ProyectModel} from './modelos/proyecto/proyectos.js';
-import {ObjetivosModel} from './modelos/objetivos.js';
+import express from 'express';
+import cors from 'cors';
+import { ApolloServer } from 'apollo-server-express';
+import dotenv from 'dotenv';
 import conectarBaseDatos from './database/database.js';
-import {InscripcionModel} from './modelos/inscripcion/inscripcion.js';
-import { ModeloAvance } from './modelos/avances/avances.js';
+//import {typeDefs} from './graphQl/tipos.js'
+import { tipos } from './graphql/tipos.js';
+import {resolvers} from './graphQl/resolvers.js';
+//import { validateToken } from './utils/tokenUtils.js';
+
+dotenv.config();
+
+// const getUserData = (token) => {
+//   const verificacion = validateToken(token.split(' ')[1]);
+//   if (verificacion.data) {
+//     return verificacion.data;
+//   } else {
+//     return null;
+//   }
+// };
+
+ const server = new ApolloServer({
+   typeDefs: tipos,
+   resolvers: resolvers,
+  // context: ({ req }) => {
+  //   const token = req.headers?.authorization ?? null;
+  //   if (token) {
+  //     const userData = getUserData(token);
+  //     if (userData) {
+  //       return { userData };
+  //     }
+  //   }
+  //   return null;
+  // },
+});
+
+const app = express();
+
+app.use(express.json());
+
+app.use(cors());
+
+app.listen({ port: process.env.PORT || 3000 }, async () => {
+  await conectarBaseDatos();
+  await server.start();
+
+  server.applyMiddleware({ app });
+
+  console.log('servidor listo');
+});
 
 
-//import Cors from 'cors';
-//import dotenv from 'dotenv';
+// import Express from 'express';
+// import {usuariosModel} from './modelos/usuario/usuarios.js';
+// import {ProyectModel} from './modelos/proyecto/proyectos.js';
+// import {ObjetivosModel} from './modelos/objetivos.js';
+// import conectarBaseDatos from './database/database.js';
+// import {InscripcionModel} from './modelos/inscripcion/inscripcion.js';
+// import { ModeloAvance } from './modelos/avances/avances.js';
 
 
-const main = async () => {
-await conectarBaseDatos(); 
+// //import Cors from 'cors';
+// //import dotenv from 'dotenv';
+
+
+// const main = async () => {
+// await conectarBaseDatos(); 
 //     await ModeloAvance.create({
 //         fecha: new Date('2021/12/24'),
 //         descripcion: 'Configuracion de herramientas',
@@ -115,5 +167,5 @@ await conectarBaseDatos();
 //     .catch((e) => {
 //         console.error(e);
 //     });
-     };
- main();
+    // };
+ //main();

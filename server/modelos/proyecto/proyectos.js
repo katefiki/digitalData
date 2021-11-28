@@ -35,10 +35,9 @@ const proyectSchema = new Schema(
       default: 'NULO',
     },
     lider: {
-      //type: Schema.Types.ObjectId,
-      type: String,
+      type: Schema.Types.ObjectId,
       required: true,
-      //ref: usuariosModel,
+      ref: usuariosModel,
     },
     objetivos: [
       {

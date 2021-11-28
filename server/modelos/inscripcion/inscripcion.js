@@ -22,15 +22,15 @@ const inscripcionSchema = new Schema({
     required: false,
   },
   proyecto: {
-      type: String,
-    //type: Schema.Types.ObjectId,
-    //ref: ProyectModel,
+    
+    type: Schema.Types.ObjectId,
+    ref: ProyectModel,
     required: true,
   },
   estudiante: {
-      type : String,
-    //type: Schema.Types.ObjectId,
-    //ref: UserModel,
+      
+    type: Schema.Types.ObjectId,
+    ref: usuariosModel,
     required: true,
   },
 });
