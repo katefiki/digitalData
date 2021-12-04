@@ -72,6 +72,6 @@ const proyectSchema = new Schema(
 //   foreignField: 'proyecto',
 // });
 
-const ProjectModel = model('Proyecto', proyectSchema);
+const ProyectModel = model('Proyecto', proyectSchema);
 
-export { ProjectModel };
+export { ProyectModel };

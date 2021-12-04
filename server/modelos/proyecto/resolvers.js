@@ -1,15 +1,15 @@
-import {ProjectModel} from './proyectos.js';
+import {ProyectModel} from './proyectos.js';
 
 const resolversProyecto = {
     Query: {
         Proyectos: async (parent, args, context) => {
-            const proyectos = await ProjectModel.find();
+            const proyectos = await ProyectModel.find();
             return proyectos;
         },
     },
     Mutation:{
         crearProyecto: async (parent, args, context) => {
-                const proyectoCreado = await ProjectModel.create({
+                const proyectoCreado = await ProyectModel.create({
                 nombre: args.nombre,
                 estado: args.estado,
                 fase: args.fase,
@@ -22,7 +22,7 @@ const resolversProyecto = {
             return proyectoCreado;
         },
         editarProyecto: async (parent, args) => {
-            const proyectoEditado = await ProjectModel.findByIdAndUpdate(
+            const proyectoEditado = await ProyectModel.findByIdAndUpdate(
                 args._id,
                 { ...args.campos },
                 { new: true }
@@ -30,7 +30,7 @@ const resolversProyecto = {
             return proyectoEditado;
         },
         crearObjetivo: async (parent, args) => {
-            const proyectoConObjetivo = await ProjectModel.findByIdAndUpdate(
+            const proyectoConObjetivo = await ProyectModel.findByIdAndUpdate(
                 args.idProyecto,
                 {
                     $addToSet: {
@@ -43,7 +43,7 @@ const resolversProyecto = {
             return proyectoConObjetivo;
         },
         editarObjetivo: async (parent, args) => {
-            const proyectoEditado = await ProjectModel.findByIdAndUpdate(
+            const proyectoEditado = await ProyectModel.findByIdAndUpdate(
                 args.idProyecto,
                 {
 		            $set: {
@@ -56,7 +56,7 @@ const resolversProyecto = {
             return proyectoEditado;
         },
         eliminarObjetivo: async (parent, args) => {
-            const proyectoObjetivo = await ProjectModel.findByIdAndUpdate(
+            const proyectoObjetivo = await ProyectModel.findByIdAndUpdate(
                 { _id: args.idProyecto },
                 {
 		            $pull: {

@@ -4,13 +4,6 @@ import { usuariosModel } from '../usuario/usuarios.js';
 
 const { Schema, model } = mongoose;
 
-// interface Avance {
-//   fecha: Date;
-//   descripcion: string;
-//   observaciones: [string];
-//   proyecto: Schema.Types.ObjectId;
-//   creadoPor: Schema.Types.ObjectId;
-// }
 
 const avanceSchema = new Schema({
   fecha: {
@@ -27,15 +20,15 @@ const avanceSchema = new Schema({
     },
   ],
   proyecto: {
-    type : String,
-    //type: Schema.Types.ObjectId,
-    //ref: ProyectModel,
+ 
+    type: Schema.Types.ObjectId,
+    ref: ProyectModel,
     required: true,
   },
   creadoPor: {
-    type : String,
-   // type: Schema.Types.ObjectId,
-    //ref: usuariosModel,
+  
+    type: Schema.Types.ObjectId,
+    ref: usuariosModel,
     required: true,
   },
 });
