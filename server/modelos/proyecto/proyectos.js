@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 // import { Enum_EstadoProyecto, Enum_FaseProyecto, Enum_TipoObjetivo } from '../enums/enums.js';
-//import { ObjetivosModel } from '../objetivos.js';
+import { ObjetivosModel } from '../objetivos.js';
 import { usuariosModel } from '../usuario/usuarios.js';
 const { Schema, model } = mongoose;
 
@@ -35,6 +35,7 @@ const proyectSchema = new Schema(
       default: 'NULO',
     },
     lider: {
+    	//type: String,
       type: Schema.Types.ObjectId,
       required: true,
       ref: usuariosModel,
@@ -71,6 +72,6 @@ const proyectSchema = new Schema(
 //   foreignField: 'proyecto',
 // });
 
-const ProyectModel = model('Proyecto', proyectSchema);
+const ProjectModel = model('Proyecto', proyectSchema);
 
-export { ProyectModel };
+export { ProjectModel };

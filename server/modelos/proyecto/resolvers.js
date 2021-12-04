@@ -1,4 +1,4 @@
-import {ProyectModel} from './proyectos.js';
+import {ProjectModel} from './proyectos.js';
 
 const resolversProyecto = {
     Query: {
