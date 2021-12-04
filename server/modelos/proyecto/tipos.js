@@ -1,6 +1,8 @@
 import {gql} from 'apollo-server-express';
 
-const proyectoTipos = gpl`
+const tiposProyecto = gql`
+	scalar Date
+
     input crearObjetivo {
         descripcion: String!
         tipo: Enum_TipoObjetivo!
@@ -35,7 +37,7 @@ const proyectoTipos = gpl`
         fechaFin: Date!
         estado: Enum_EstadoProyecto!
         fase: Enum_FaseProyecto!
-        lider: Usuario!
+        lider: String!
         objetivos: [Objetivo]
     }
 
@@ -61,6 +63,6 @@ const proyectoTipos = gpl`
     }
 `;
 
-// Verificar Linea 38 --->  lider: Usuario!
+// Verificar Linea 40 --->  lider: Usuario!, Actualmente lider: String!
 
-export {proyectoTipos};
+export {tiposProyecto};
