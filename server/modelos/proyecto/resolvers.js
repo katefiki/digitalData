@@ -1,6 +1,6 @@
-import ProyectModel from './proyectos';
+import {ProyectModel} from './proyectos.js';
 
-const resolverProyecto = {
+const resolversProyecto = {
     Query: {
         Proyectos: async (parent, args, context) => {
             const proyectos = await ProjectModel.find();
@@ -46,10 +46,10 @@ const resolverProyecto = {
             const proyectoEditado = await ProjectModel.findByIdAndUpdate(
                 args.idProyecto,
                 {
-                $set: {
-                    [`objetivos.${args.indexObjetivo}.descripcion`]: args.campos.descripcion,
-                    [`objetivos.${args.indexObjetivo}.tipo`]: args.campos.tipo,
-                },
+		            $set: {
+		                [`objetivos.${args.indexObjetivo}.descripcion`]: args.campos.descripcion,
+		                [`objetivos.${args.indexObjetivo}.tipo`]: args.campos.tipo,
+		            },
                 },
                 { new: true }
             );
@@ -59,11 +59,11 @@ const resolverProyecto = {
             const proyectoObjetivo = await ProjectModel.findByIdAndUpdate(
                 { _id: args.idProyecto },
                 {
-                $pull: {
-                    objetivos: {
-                    _id: args.idObjetivo,
-                    },
-                },
+		            $pull: {
+		                objetivos: {
+		                _id: args.idObjetivo,
+		                },
+		            },
                 },
                 { new: true }
             );
@@ -72,4 +72,4 @@ const resolverProyecto = {
     },
 };
 
-export {resolverProyecto};
+export {resolversProyecto};
