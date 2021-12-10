@@ -43,6 +43,23 @@ const usuariosSchema = new Schema({
     default: 'PENDIENTE',
   },
 });
+usuariosSchema.virtual('proyectosLiderados', {
+  ref: 'Proyecto',
+  localField: '_id',
+  foreignField: 'lider',
+});
+
+usuariosSchema.virtual('avancesCreados', {
+  ref: 'Avance',
+  localField: '_id',
+  foreignField: 'creadoPor',
+});
+
+usuariosSchema.virtual('inscripciones', {
+  ref: 'Inscripcion',
+  localField: '_id',
+  foreignField: 'estudiante',
+});
 
 const usuariosModel = model('User', usuariosSchema);
 

@@ -40,7 +40,7 @@ app.use(express.json());
 
 app.use(cors());
 
-app.listen({ port: process.env.PORT || 3000 }, async () => {
+app.listen({ port: process.env.PORT || 3002 }, async () => {
   await conectarBaseDatos();
   await server.start();
 

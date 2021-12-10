@@ -35,8 +35,7 @@ const proyectSchema = new Schema(
       default: 'NULO',
     },
     lider: {
-    	//type: String,
-      type: Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
       required: true,
       ref: usuariosModel,
     },
@@ -54,23 +53,23 @@ const proyectSchema = new Schema(
       },
     ],
   },
-//   {
-//     toJSON: { virtuals: true }, // So `res.json()` and other `JSON.stringify()` functions include virtuals
-//     toObject: { virtuals: true }, // So `console.log()` and other functions that use `toObject()` include virtuals
-//   }
+  {
+     toJSON: { virtuals: true }, // So `res.json()` and other `JSON.stringify()` functions include virtuals
+    toObject: { virtuals: true }, // So `console.log()` and other functions that use `toObject()` include virtuals
+   }
 );
 
-// proyectSchema.virtual('avances', {
-//   ref: 'Avance',
-//   localField: '_id',
-//   foreignField: 'proyecto',
-// });
+ proyectSchema.virtual('avances', {
+   ref: 'Avance',
+   localField: '_id',
+   foreignField: 'proyecto',
+ });
 
-// proyectSchema.virtual('inscripciones', {
-//   ref: 'Inscripcion',
-//   localField: '_id',
-//   foreignField: 'proyecto',
-// });
+ proyectSchema.virtual('inscripciones', {
+  ref: 'Inscripcion',
+  localField: '_id',
+  foreignField: 'proyecto',
+ });
 
 const ProyectModel = model('Proyecto', proyectSchema);
 
