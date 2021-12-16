@@ -17,9 +17,18 @@ const resolversProyecto = {
       return inscripciones;
     },
   },
-  Query: {
+   Query: {
     Proyectos: async (parent, args, context) => {
-      const proyectos = await ProyectModel.find().populate('avances').populate('inscripciones');
+      if (context.userData) {
+        if (context.userData.rol === 'LIDER') {
+          const proyectos = await ProyectModel.find({ lider: context.userData._id });
+          return proyectos;
+        } else if (context.userData.rol === 'LIDER') {
+          // const proyectos = await ProyectModel.find({ lider: context.userData._id });
+          // return proyectos;
+        }
+      }
+      const proyectos = await ProyectModel.find();
       return proyectos;
     },
   },
