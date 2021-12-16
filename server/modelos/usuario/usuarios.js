@@ -1,20 +1,7 @@
 import mongoose from 'mongoose';
 const { Schema, model } = mongoose;
 
-const usuariosSchema = new Schema({
-  nombre: {
-    type: String,
-    required: true,
-  },
-  apellido: {
-    type: String,
-    required: true,
-  },
-  identificacion: {
-    type: String,
-    required: true,
-    unique: true,
-  },
+const userSchema = new Schema({
   email: {
     type: String,
     required: true,
@@ -23,15 +10,37 @@ const usuariosSchema = new Schema({
       validator: (email) => {
         return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
       },
-      
-      message: 'El formato del correo electrónico está errado.',
+      // (email) => {
+      //   if (email.includes('@') && email.includes('.')) {
+      //     return true;
+      //   } else {
+      //     return false;
+      //   }
+      // },
+      message: 'El formato del correo electrónico está malo.',
     },
   },
   password: {
     type: String,
     required: true,
   },
-  
+  identificacion: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  nombre: {
+    type: String,
+    required: true,
+  },
+  apellido: {
+    type: String,
+    required: true,
+  },
+  foto: {
+    type: String,
+    required: false,
+  },
   rol: {
     type: String,
     required: true,
@@ -43,24 +52,25 @@ const usuariosSchema = new Schema({
     default: 'PENDIENTE',
   },
 });
-usuariosSchema.virtual('proyectosLiderados', {
+
+userSchema.virtual('proyectosLiderados', {
   ref: 'Proyecto',
   localField: '_id',
   foreignField: 'lider',
 });
 
-usuariosSchema.virtual('avancesCreados', {
+userSchema.virtual('avancesCreados', {
   ref: 'Avance',
   localField: '_id',
   foreignField: 'creadoPor',
 });
 
-usuariosSchema.virtual('inscripciones', {
+userSchema.virtual('inscripciones', {
   ref: 'Inscripcion',
   localField: '_id',
   foreignField: 'estudiante',
 });
 
-const usuariosModel = model('User', usuariosSchema);
+const usuariosModel = model('User', userSchema);
 
 export { usuariosModel };
