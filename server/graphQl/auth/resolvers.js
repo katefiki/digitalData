@@ -39,6 +39,7 @@ const resolversAutenticacion = {
             identificacion: usuarioEcontrado.identificacion,
             email: usuarioEcontrado.email,
             rol: usuarioEcontrado.rol,
+            foto: usuarioEncontrado.foto,
           }),
         };
       }
@@ -59,6 +60,7 @@ const resolversAutenticacion = {
             identificacion: context.userData.identificacion,
             email: context.userData.email,
             rol: context.userData.rol,
+            foto: context.userData.foto,
           }),
         };
       }
