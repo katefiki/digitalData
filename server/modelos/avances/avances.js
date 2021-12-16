@@ -10,15 +10,18 @@ const avanceSchema = new Schema({
     type: Date,
     required: true,
   },
+  
   descripcion: {
     type: String,
     required: true,
   },
+
   observaciones: [
     {
       type: String,
     },
   ],
+
   proyecto: {
  
     type: Schema.Types.ObjectId,
