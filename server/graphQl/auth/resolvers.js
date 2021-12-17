@@ -29,20 +29,20 @@ const resolversAutenticacion = {
     },
 
     login: async (parent, args) => {
-      const usuarioEcontrado = await usuariosModel.findOne({ email: args.email });
-      if (await bcrypt.compare(args.password, usuarioEcontrado.password)) {
+      const usuarioEncontrado = await usuariosModel.findOne({ email: args.email });
+      if (await bcrypt.compare(args.password, usuarioEncontrado.password)) {
         return {
           token: generateToken({
-            _id: usuarioEcontrado._id,
-            nombre: usuarioEcontrado.nombre,
-            apellido: usuarioEcontrado.apellido,
-            identificacion: usuarioEcontrado.identificacion,
-            email: usuarioEcontrado.email,
-            rol: usuarioEcontrado.rol,
+            _id: usuarioEncontrado._id,
+            nombre: usuarioEncontrado.nombre,
+            apellido: usuarioEncontrado.apellido,
+            identificacion: usuarioEncontrado.identificacion,
+            email: usuarioEncontrado.email,
+            rol: usuarioEncontrado.rol,
             foto: usuarioEncontrado.foto,
           }),
-        };
-      }
+        };   
+      }         
     },
 
     refreshToken: async (parent, args, context) => {

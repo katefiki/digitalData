@@ -18,7 +18,7 @@ const resolversProyecto = {
     },
   },
    Query: {
-    Proyectos: async (parent, args, context) => {
+       Proyectos: async (parent, args, context) => {
       if (context.userData) {
         if (context.userData.rol === 'LIDER') {
           const proyectos = await ProyectModel.find({ lider: context.userData._id });
@@ -55,6 +55,7 @@ const resolversProyecto = {
     },
     crearObjetivo: async (parent, args) => {
       const proyectoConObjetivo = await ProyectModel.findByIdAndUpdate(
+//{ _id: args.idProyecto },
         args.idProyecto,
         {
           $addToSet: {
@@ -68,6 +69,7 @@ const resolversProyecto = {
     },
     editarObjetivo: async (parent, args) => {
       const proyectoEditado = await ProyectModel.findByIdAndUpdate(
+        //{ _id: args.idProyecto },
         args.idProyecto,
         {
           $set: {

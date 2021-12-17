@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import { ApolloServer } from 'apollo-server-express';
 import dotenv from 'dotenv';
-import conectarBD from './database/database.js';
+import conectarBaseDatos from './database/database.js';
 import { tipos } from './graphql/tipos.js';
 import { resolvers } from './graphql/resolvers.js';
 import { validateToken } from './utils/tokenUtils.js';
@@ -40,7 +40,7 @@ app.use(express.json());
 app.use(cors());
 
 app.listen({ port: process.env.PORT || 3002 }, async () => {
-  await conectarBD();
+  await conectarBaseDatos();
   await server.start();
 
   server.applyMiddleware({ app });
